@@ -5,12 +5,15 @@ const cors = require('cors')
 const router = express.Router()
 const app = express()
 
-const server = ({ stockController, dashboardController }) => {
+const server = ({ stockController, dashboardController, saleController }) => {
   const listen = port => {
     router.get('/stocks/:code', stockController.get)
     router.get('/stocks', stockController.all)
     router.post('/stocks', stockController.create)
     router.put('/stocks/:id', stockController.update)
+
+    router.get('/sales', saleController.all)
+    router.post('/sales', saleController.create)
 
     router.get('/dashboard', dashboardController.all)
 

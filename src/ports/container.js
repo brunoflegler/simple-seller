@@ -8,6 +8,10 @@ const stockRepository = require('../repositories/stock')
 const stockModel = require('./database/mongo/models/stock')
 const stockValidator = require('./http/controllers/validators/stock')
 
+const saleController = require('./http/controllers/sale')
+const saleRepository = require('../repositories/sale')
+const saleModel = require('./database/mongo/models/sale')
+
 const dashboardController = require('./http/controllers/dashboard')
 
 const database = require('./database/mongo')
@@ -25,6 +29,9 @@ container.register({
   stockRepository: asFunction(stockRepository),
   stockModel: asFunction(stockModel).singleton(),
   stockValidator: asFunction(stockValidator),
+  saleModel: asFunction(saleModel).singleton(),
+  saleController: asFunction(saleController),
+  saleRepository: asFunction(saleRepository),
   dashboardController: asFunction(dashboardController),
   database: asFunction(database),
   validateSchema: asValue(validateSchema),
